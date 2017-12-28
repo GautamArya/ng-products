@@ -1,70 +1,21 @@
-<div class="page-header" [style.display]="selection.isEmpty() ? '' : 'none'">
-    <mat-form-field floatPlaceholder="never">
-        <input matInput #filter placeholder="Search products">
-    </mat-form-field>
-</div>
-
-<div class="page-header page-selection-header" *ngIf="!selection.isEmpty()">
-    {{selection.selected.length}}
-    {{selection.selected.length == 1 ? 'product' : 'Products'}}
-    selected
-</div>
-
-<div class="page-container mat-elevation-z8">
-    <mat-header-cell *matHeaderCellDef>
-        <mat-checkbox (change)="$event ? masterToggle() : null"
-            [checked]="isAllSelected()"
-            [indeterminate]="selection.hasValue() && !isAllSelected()">
-        </mat-checkbox>
-    </mat-header-cell>
-
-    <mat-cell *matCellDef="let row">
-        <mat-checkbox (click)="$event.stopPropagation()"
-                        (change)="$event ? selection.toggle(row.id) : null"
-                        [checked]="selection.isSelected(row.id)">
-        </mat-checkbox>
-    </mat-cell>
-
-    <!-- ID Column -->
-    <ng-container matColumnDef="userId">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
-    </ng-container>
-    
-    <!-- Progress Column -->
-    <ng-container matColumnDef="progress">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Progress </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.progress}}% </mat-cell>
-    </ng-container>
-    
-    <!-- Name Column -->
-    <ng-container matColumnDef="userName">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
-    </ng-container>
-    
-    <!-- Color Column -->
-    <ng-container matColumnDef="color">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Color </mat-header-cell>
-        <mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.color}} </mat-cell>
-    </ng-container>
-    
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;"
-                [class.example-selected-row]="selection.isSelected(row.id)"
-                (click)="selection.toggle(row.id)">
-        </mat-row>
-    </mat-table>
-    
-    <div class="example-no-results"
-            [style.display]="dataSource.renderedData.length == 0 ? '' : 'none'">
-        No users found matching filter.
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        Product List
     </div>
-    
-    <mat-paginator #paginator
-                    [length]="dataSource.filteredData.length"
-                    [pageIndex]="0"
-                    [pageSize]="25"
-                    [pageSizeOptions]="[5, 10, 25, 100]">
-    </mat-paginator>
+
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-2">Filter By: </div>
+            <div class="col-md-4">
+                <input type="text" name="product_search" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Filtered By: </h3>
+            </div>
+        </div>
+
+        
+    </div>
 </div>
