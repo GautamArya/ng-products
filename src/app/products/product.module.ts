@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { Component } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -8,8 +9,11 @@ import {
     MatInputModule,
 } from '@angular/material';
 
+
 @NgModule({
-    declarations: [ ],
+    declarations: [
+        ProductListComponent
+    ],
     imports: [
         BrowserAnimationsModule,
         MatButtonModule,
