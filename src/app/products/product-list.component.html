@@ -1,9 +1,9 @@
-<div class="panel panel-primary">
-    <div class="panel-heading">
-        Product List
+<div class="card border-primary">
+    <div class="card-header text-primary">
+        {{pageTitle}}
     </div>
 
-    <div class="panel-body">
+    <div class="card-body">
         <div class="row">
             <div class="col-md-2">Filter By: </div>
             <div class="col-md-4">
@@ -17,7 +17,7 @@
         </div>
 
         <div class="table-responsive">
-            <table class="table">
+            <table class="table" *ngIf="products && products.length">
                 <thead>
                     <tr>
                         <th>
@@ -31,7 +31,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    
+                    <tr *ngFor="let p of products">
+                        <td> <img [src]='p.imageUrl' [title]='p.productName'
+                            [style.width.px]='imageWidth'
+                            [style.marging.px]='imageMargin'> </td>
+                        <td>{{ p.productName }}</td>
+                        <td>{{ p.productCode }}</td>
+                        <td>{{ p.releaseDate }}</td>
+                        <td>{{ p.price }}</td>
+                        <td>{{ p.starRating }}</td>
+                    </tr>
                 </tbody>
             </table>
         </div>
