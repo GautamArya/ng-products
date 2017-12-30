@@ -1,0 +1,8 @@
+.crop {
+    overflow: hidden;
+    height: 16px;
+}
+
+.crop span {
+    float: left;
+}
